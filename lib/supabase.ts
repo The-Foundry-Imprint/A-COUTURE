@@ -6,7 +6,7 @@ export const sb = () => {
   const c = cookies()
   return createServerClient(URL, ANON, { cookies: {
     getAll: () => c.getAll(),
-    setAll: l => { try { l.forEach(({ name, value, options }) => c.set(name, value, options)) } catch {} } } })
+        setAll: (l: any[]) => { try { l.forEach(({ name, value, options }: any) => c.set(name, value, options)) } catch {} } } })
 }
 // service role: server-only, used for sign-up
 export const svc = () => createClient(URL, process.env.SUPABASE_SERVICE_ROLE_KEY!)
