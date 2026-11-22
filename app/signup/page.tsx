@@ -28,7 +28,7 @@ export default function Signup({ searchParams }: any) {
   const msg: any = { closed: 'This fashion house is not recruiting tailors right now.', 'no-house': 'Fashion house not found. Check the name.', 'house-taken': 'That house name is taken.', account: 'Could not create account.' }
   return <form action={signup} className="space-y-3 pt-6 max-w-sm">
     <h1 className="text-2xl">Create account</h1>
-    {searchParams.error && <p className="text-red-700">{msg[searchParams.error] ?? 'Check your details.'}</p>}
+    {msg[searchParams.error] ?? searchParams.error}
     <select className="in" name="role"><option value="client">Client</option><option value="tailor">Tailor</option><option value="admin">Admin (create a new fashion house)</option></select>
     <input className="in" name="house" placeholder="Fashion house name" required />
     <input className="in" name="name" placeholder="Full name" required />
