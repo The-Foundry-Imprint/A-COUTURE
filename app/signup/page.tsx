@@ -10,7 +10,7 @@ export default function Signup({ searchParams }: any) {
     let tenantId: string
     if (role === 'admin') {
       const { data, error } = await a.from('tenants').insert({ name: house, slug: slugify(house) }).select().single()
-      if (error || !data) redirect('/signup?error=house-taken')
+            if (error || !data) redirect('/signup?error=' + encodeURIComponent(error?.message ?? 'no data'))
       tenantId = data.id
     } else {
       const { data: t } = await a.from('tenants').select('id,tailor_signup_open').eq('slug', slugify(house)).single()
